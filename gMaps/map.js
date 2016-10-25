@@ -38,6 +38,7 @@ mapApp.config(function($routeProvider) {
         })
         .when('/trip', {
             templateUrl: 'trip.html',
+            controller: 'LoginController'
         })
 });
 mapApp.controller('MainController', function($scope) {
@@ -55,8 +56,9 @@ mapApp.controller('MainController', function($scope) {
     $scope.tripName = "ex";
     $scope.tripStart = "here";
     $scope.tripDestination = "there";
-    $scope.writeUserData = function(tripName, tripStart, tripDestination) {
-        writeUserData(tripName, tripStart, tripDestination);
+    $scope.tripColor = "red";
+    $scope.writeUserData = function(tripName, tripStart, tripDestination, tripColor) {
+        writeUserData(tripName, tripStart, tripDestination, tripColor);
     }
 
 
@@ -103,5 +105,49 @@ mapApp.controller('MapController', function($scope) {
         e.preventDefault();
         google.maps.event.trigger(selectedMarker, 'click');
     }
+
+});
+mapApp.controller('LoginController', function($scope) {
+
+    $scope.txtEmail = document.getElementById('txtEmail');
+    $scope.txtPassword = document.getElementById('txtPassword');
+    $scope.btnLogin = document.getElementById('btnLogin');
+    $scope.btnSignUp = document.getElementById('btnSignUp');
+    $scope.btnLogout = document.getElementById('btnLogout');
+
+
+    btnLogin.addEventListener('click', e => {
+        const email = txtEmail.value;
+        const pass = txtPassword.value;
+        const auth = firebase.auth();
+
+        const promise = auth.signInWithEmailAndPassword(email, pass);
+        promise.catch(e => console.log(e.message));
+    });
+
+    btnSignUp.addEventListener('click', e => {
+        const email = txtEmail.value;
+        const pass = txtPassword.value;
+        const auth = firebase.auth();
+
+        const promise = auth.createUserWithEmailAndPassword(email, pass);
+        promise.catch(e => console.log(e.message));
+    });
+
+    btnLogout.addEventListener('click', e => {
+        firebase.auth().signOut();
+    });
+
+    firebase.auth().onAuthStateChanged(firebaseUser => {
+        if (firebaseUser) {
+            console.log(firebaseUser);
+            btnLogout.classList.remove('hide');
+            btnLogin.classList.add('hide');
+        } else {
+            console.log('not logged in');
+            btnLogout.classList.add('hide');
+            btnLogin.classList.remove('hide');
+        }
+    })
 
 });
