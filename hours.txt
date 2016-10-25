@@ -1,0 +1,10 @@
+pulling from db - 9hours -(2)
+pushing to db - 2hours
+authentication - 5 hours (3)
+adding info t trip - 10 hours
+
+RESEARCH
+api - 3 hours
+
+
+
