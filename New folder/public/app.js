@@ -10,7 +10,7 @@
     };
 
     var ref = firebase.initializeApp(config);
-    var app = angular.module('app', ['firebase', 'ngRoute']);
+    var app = angular.module('app', ['firebase', 'ngRoute', 'google-maps']);
     app.config(function($firebaseRefProvider, $routeProvider) {
 
         $firebaseRefProvider.registerUrl({
@@ -32,6 +32,7 @@
     app.factory('ObjectFactory', ObjectFactory)
     app.controller('LoginCtrl', LoginCtrl);
     app.controller('TripListCtrl', TripListCtrl);
+    app.controller('MapController', MapController);
 
     function ObjectFactory($firebaseObject, $firebaseRef) {
         return $firebaseObject($firebaseRef.object);
@@ -110,6 +111,57 @@
             liToRemove.remove();
         });
 
+    }
+
+    function MapController($scope) {
+        // map object
+        $scope.map = {
+            control: {},
+            center: {
+                latitude: -37.812150,
+                longitude: 144.971008
+            },
+            zoom: 14
+        };
+
+        // marker object
+        $scope.marker = {
+            center: {
+                latitude: -37.812150,
+                longitude: 144.971008
+            }
+        }
+
+        // instantiate google map objects for directions
+        var directionsDisplay = new google.maps.DirectionsRenderer();
+        var directionsService = new google.maps.DirectionsService();
+        var geocoder = new google.maps.Geocoder();
+
+        // directions object -- with defaults
+        $scope.directions = {
+            origin: "Collins St, Melbourne, Australia",
+            destination: "MCG Melbourne, Australia",
+            showList: false
+        }
+
+        // get directions using google maps api
+        $scope.getDirections = function() {
+            var request = {
+                origin: $scope.directions.origin,
+                destination: $scope.directions.destination,
+                travelMode: google.maps.DirectionsTravelMode.DRIVING
+            };
+            directionsService.route(request, function(response, status) {
+                if (status === google.maps.DirectionsStatus.OK) {
+                    directionsDisplay.setDirections(response);
+                    directionsDisplay.setMap($scope.map.control.getGMap());
+                    directionsDisplay.setPanel(document.getElementById('directionsList'));
+                    $scope.directions.showList = true;
+                } else {
+                    alert('Google route unsuccesfull!');
+                }
+            });
+        }
     }
 
 }());
