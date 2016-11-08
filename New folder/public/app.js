@@ -1,6 +1,5 @@
 (function() {
 
-
     var config = {
         apiKey: "AIzaSyA65DCJTwkPM1gdjI2ClBHcsnsFdKYbMu0",
         authDomain: "web-app-a0d3e.firebaseapp.com",
@@ -12,10 +11,9 @@
     var ref = firebase.initializeApp(config);
     var app = angular.module('app', ['firebase', 'ngRoute', 'google-maps']);
     app.config(function($firebaseRefProvider, $routeProvider) {
-
         $firebaseRefProvider.registerUrl({
             default: config.databaseURL,
-            object: `${config.databseUrl}/object/trips`
+            object: `https://web-app-a0d3e.firebaseio.com/object/users`
         });
         $routeProvider
             .when('/', {
@@ -24,13 +22,19 @@
             .when('/login', {
                 templateUrl: 'login.html',
             })
+            .when('/display', {
+                templateUrl: 'display.html'
+            })
+            .when('/create', {
+                templateUrl: 'create.html'
+            })
             .when('/trip', {
                 templateUrl: 'trip.html',
             })
-
     })
     app.factory('ObjectFactory', ObjectFactory)
     app.controller('LoginCtrl', LoginCtrl);
+    app.controller('DisplayCtrl', DisplayCtrl);
     app.controller('TripListCtrl', TripListCtrl);
     app.controller('MapController', MapController);
 
@@ -60,15 +64,22 @@
             const email = txtEmail.value;
             const pass = txtPassword.value;
             const auth = firebase.auth();
-
-            const promise = auth.createUserWithEmailAndPassword(email, pass);
+            const promise = auth.createUserWithEmailAndPassword(email, pass)
+                .then(user => createUser(user))
             promise.catch(e => console.log(e.message));
-
-            firebase.database().ref().child("users").child(authData.uid).set({
-                provider: authData.provider,
-                name: getName(authData)
-            });
         });
+
+        function createUser(user) {
+
+            if (user != null) {
+                const dbRefObject = firebase.database().ref().child('object');
+                const dbRefList = dbRefObject.child("users/" + user.uid);
+                dbRefList.set({
+                    email: user.email,
+                    uid: user.uid
+                });
+            }
+        }
 
         btnLogout.addEventListener('click', e => {
             firebase.auth().signOut();
@@ -87,13 +98,14 @@
         })
     }
 
-    function TripListCtrl($scope) {
+    function DisplayCtrl(ObjectFactory) {
+        console.log(ObjectFactory);
         const preObject = document.getElementById('object');
         const ulList = document.getElementById('list');
 
         const dbRefObject = firebase.database().ref().child('object');
-        const dbRefList = dbRefObject.child('trips/trip1');
-        console.log(dbRefList);
+        const dbRefList = dbRefObject.child('users/');
+
         dbRefList.on('child_added', snap => {
             const li = document.createElement('li');
             li.innerText = snap.val();
@@ -110,8 +122,9 @@
             const liToRemove = document.getElementById(snap.key);
             liToRemove.remove();
         });
-
     }
+
+    function TripListCtrl($scope) {}
 
     function MapController($scope) {
         // map object
@@ -139,8 +152,8 @@
 
         // directions object -- with defaults
         $scope.directions = {
-            origin: "Collins St, Melbourne, Australia",
-            destination: "MCG Melbourne, Australia",
+            origin: "camden tn",
+            destination: "chicago",
             showList: false
         }
 
