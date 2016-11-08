@@ -17,13 +17,13 @@
         });
         $routeProvider
             .when('/', {
-                templateUrl: 'main.html',
+                templateUrl: 'main/main.html',
             })
             .when('/login', {
-                templateUrl: 'login.html',
+                templateUrl: 'login/login.html',
             })
             .when('/display', {
-                templateUrl: 'display.html'
+                templateUrl: 'display/display.html'
             })
             .when('/create', {
                 templateUrl: 'create.html'
