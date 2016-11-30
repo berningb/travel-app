@@ -123,7 +123,7 @@ angular.module('app').component('page', {
 
             var request = {
                 location: me,
-                radius: '5000',
+                radius: '1000',
                 type: ['gas_station']
             };
 

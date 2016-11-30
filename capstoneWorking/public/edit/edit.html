@@ -1,18 +1,45 @@
 <nav></nav>
-<div class="container">
-    <form novalidate class="simple-form row">
-        <label>Name:</label>
-        <input type="text" ng-model="thing.Name" />
-        <br />
-        <label> Origin Location:</label>
-        <input type="text" ng-model="thing.Location" />
-        <br />
-        <label>Destination: </label>
-        <input type="text" ng-model="thing.Destination" />
-        <br />
-        <label>Mpg </label>
-        <input type="text" ng-model="thing.Mpg" /><br />
+<div class="container" style="padding-top: 100px;">
 
-        <input type="submit" ng-click="updateName(thing.Name, thing.Location, thing.Destination, thing.Mpg)" value="Save" />
+
+    <form class="form-horizontal" role="form">
+        <div class="form-group">
+            <label for="name" class="col-sm-2 control-label">Name</label>
+            <div class="col-sm-8">
+                <input id="name" type="text" class="form-control" ng-model="thing.Name" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="origin" class="col-sm-2 control-label">Origin Location</label>
+            <div class="col-sm-8">
+                <input id="origin" type="text" class="form-control" ng-model="thing.Location" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="origin" class="col-sm-2 control-label">Destination</label>
+            <div class="col-sm-8">
+                <input id="destination" type="text" class="form-control" ng-model="thing.Destination" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="origin" class="col-sm-2 control-label">Mpg</label>
+            <div class="col-sm-8">
+                <input id="mpg" type="text" class="form-control" ng-model="thing.Mpg" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-8">
+
+                <button class="btn btn-primary" ng-click="updateName(thing.Name, thing.Location, thing.Destination, thing.Mpg)">Save</button>
+            </div>
+
+        </div>
     </form>
+
+
+
+
+
+
 </div>

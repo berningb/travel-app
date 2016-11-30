@@ -4,15 +4,11 @@
 }
 
 body {
-    background: #EBEFF2;
+    padding-top: 60px;
 }
 
 .pointable {
     cursor: pointer
-}
-
-.navbar-inverse2 {
-    background-color: white;
 }
 
 #map {
@@ -25,8 +21,10 @@ body {
 .head {
     background: #039BE5;
     height: auto;
-    padding: 50px;
-    box-shadow: 0 4px 5px 1px #888888;
+    position: relative;
+    top: -20px;
+    padding: 20px;
+    box-shadow: 0px 0px 20px #888888;
     color: white;
 }
 
@@ -63,9 +61,7 @@ body {
 }
 
 .section {
-    height: auto;
-    padding-top: 30px;
-    padding-bottom: 30px;
+    height: 500px;
 }
 
 
@@ -92,7 +88,6 @@ body {
     width: auto;
     height: 233px;
     margin: auto;
-    background: white;
 }
 
 .inner-block2 {
@@ -119,7 +114,6 @@ body {
 .title {
     font-size: 2em;
     color: black;
-    overflow: hidden;
 }
 
 .close-button {

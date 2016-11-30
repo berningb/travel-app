@@ -1,0 +1,18 @@
+<nav></nav>
+<div class="container">
+    <form novalidate class="simple-form row">
+        <label>Name:</label>
+        <input type="text" ng-model="thing.Name" />
+        <br />
+        <label> Origin Location:</label>
+        <input type="text" ng-model="thing.Location" />
+        <br />
+        <label>Destination: </label>
+        <input type="text" ng-model="thing.Destination" />
+        <br />
+        <label>Mpg </label>
+        <input type="text" ng-model="thing.Mpg" /><br />
+
+        <input type="submit" ng-click="updateName(thing.Name, thing.Location, thing.Destination, thing.Mpg)" value="Save" />
+    </form>
+</div>

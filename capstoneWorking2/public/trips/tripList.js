@@ -8,9 +8,9 @@ angular.module('app').component('triplist', {
         this.createNewTrip = function() {
             this.trips.$add({
                 Name: this.newTripName,
-                Location: "",
-                Destination: "",
-                Mpg: "25",
+                Location: "None",
+                Destination: "None",
+                Mpg: "",
                 New: true
             });
             this.newTripName = '';

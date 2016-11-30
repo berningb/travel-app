@@ -1,0 +1,67 @@
+<nav></nav>
+<div class="container-fluid main-head head">
+    <div class="container">
+        <h1>Start by clicking on a trip or try creating a new one!</h1>
+    </div>
+</div>
+
+
+
+
+
+
+
+<div class="container">
+    <div ng-repeat="trip in $ctrl.trips">
+        <div class="block col-xs-12 col-sm-6 col-lg-4">
+
+            <div class="inner-block">
+
+                <button class="close close-button" ng-click="removeChild(trip.$id)" aria-label="Close">
+                    <span class ="wow"aria-hidden="true">&times;</span>
+                </button>
+
+                <a ng-href="#/trip/{{trip.$id}}">
+                    <div>
+                        <div class="col-xs-12 inner-space">
+                            <span class="title">{{trip.Name}}</span>
+                        </div>
+                        <div class="col-xs-12 inner-space">
+
+                            <div class="col-xs-12">
+                                <p id="trip-location">{{trip.Location}}</p>
+                                <p id="trip-destination">{{trip.Destination}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+
+
+            </div>
+
+        </div>
+    </div>
+
+
+    <div class="block col-xs-12 col-sm-6 col-lg-4">
+
+        <div class="inner-block">
+
+            <div class="close close-button" aria-label="Close">
+                <span class="wow" aria-hidden="true">&nbsp;</span>
+            </div>
+
+            <div>
+                <div class="col-xs-12 inner-space">
+                    <input id="create" type="text " placeholder="Create a new trip" ng-model="$ctrl.newTripName " />
+                </div>
+                <div class="col-xs-12 inner-space">
+
+                    <div class="col-xs-12">
+                        <button class="right btn btn-primary btn-md " ng-click="$ctrl.createNewTrip() ">Create</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

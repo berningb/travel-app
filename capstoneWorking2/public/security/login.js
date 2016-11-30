@@ -9,7 +9,7 @@ angular.module('app').component('login', {
 
         this.anonLogin = function() {
             auth.$signInAnonymously().then(function() {
-                $location.path('/userpref');
+                $location.path('/home');
             }).catch((function(err) {
                 this.errorMessage = err.message;
             }).bind(this))
@@ -17,7 +17,7 @@ angular.module('app').component('login', {
 
         this.fbLogin = function() {
             auth.$signInWithPopup("facebook").then(function() {
-                $location.path('/userpref');
+                $location.path('/home');
             }).catch((function(err) {
                 this.errorMessage = err.message;
                 console.log(err);
@@ -26,7 +26,7 @@ angular.module('app').component('login', {
 
         this.googleLogin = function() {
             auth.$signInWithPopup("google").then(function() {
-                $location.path('/userpref');
+                $location.path('/home');
             }).catch((function(err) {
                 this.errorMessage = err.message;
             }).bind(this))
