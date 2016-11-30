@@ -29,7 +29,7 @@
                 templateUrl: 'create.html'
             })
             .when('/trip', {
-                templateUrl: 'trip.html',
+                templateUrl: 'trip/trip.html',
             })
     })
     app.factory('ObjectFactory', ObjectFactory)

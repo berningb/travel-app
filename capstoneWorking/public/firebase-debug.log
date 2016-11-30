@@ -3,12 +3,12 @@
 [debug] CLI Version:  3.0.8
 [debug] Platform:     win32
 [debug] Node Version: v5.10.1
-[debug] Time:         Mon Nov 14 2016 19:35:01 GMT-0700 (Mountain Standard Time)
+[debug] Time:         Fri Nov 25 2016 19:44:38 GMT-0700 (Mountain Standard Time)
 [debug] ----------------------------------------------------------------------
 [debug] 
 [info] Starting Firebase development server...
 [info] 
-[info] Project Directory: C:\Users\thing\Desktop\New folder
+[info] Project Directory: C:\Users\thing\Desktop\capstoneWorking
 [info] Public Directory: public
 [info] 
 [info] Server listening at: http://localhost:5000

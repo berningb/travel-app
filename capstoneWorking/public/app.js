@@ -1,4 +1,4 @@
-var app = angular.module('app', ['ngRoute', 'firebase']);
+var app = angular.module('app', ['ngRoute', 'firebase', 'google-maps']);
 
 
 app.run(function($rootScope, $location) {

@@ -2,15 +2,18 @@
 <html ng-app='app'>
 
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
     <link rel="stylesheet" href="styles.css">
 </head>
 
-<body class='container'>
+<body>
     <ng-view></ng-view>
     <script src="https://code.angularjs.org/1.5.0/angular.min.js"></script>
     <script src="https://code.angularjs.org/1.5.0/angular-route.min.js"></script>
     <script src="https://www.gstatic.com/firebasejs/3.2.1/firebase.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
     <script>
         var config = {
             apiKey: "AIzaSyA65DCJTwkPM1gdjI2ClBHcsnsFdKYbMu0",
@@ -20,6 +23,7 @@
         firebase.initializeApp(config);
     </script>
     <script src="https://cdn.firebase.com/libs/angularfire/2.0.1/angularfire.min.js"></script>
+    <!--/*<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDAU9S11ViVahgkM6V12-vi4i6r8WBR-4&sensor=false&language=en"></script>*/-->
     <script src="app.js"></script>
     <script src="home/home.js"></script>
     <script src="fbURL.js"></script>
@@ -32,7 +36,10 @@
     <script src="trips/tripList.js"></script>
     <script src="page/page.js"></script>
     <script src="edit/edit.js"></script>
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCd34MBmKGtRV2LaDRckKW7t2muHn-SjUA&libraries=visualization&callback=initMap">
+
+    <script data-require="lodash-underscore@*" data-semver="2.4.1" src="https://rawgit.com/lodash/lodash/2.4.1/dist/lodash.underscore.min.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?&libraries=places"></script>
+    <script data-require="angular-google-maps@*" data-semver="1.1.4" src="https://rawgit.com/nlaplante/angular-google-maps/1.1.4/dist/angular-google-maps.min.js"></script>
     </script>
 </body>
 

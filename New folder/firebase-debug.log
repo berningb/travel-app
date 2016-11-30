@@ -3,12 +3,13 @@
 [debug] CLI Version:  3.0.8
 [debug] Platform:     win32
 [debug] Node Version: v5.10.1
-[debug] Time:         Fri Nov 11 2016 09:16:43 GMT-0700 (Mountain Standard Time)
+[debug] Time:         Wed Nov 23 2016 21:46:07 GMT-0700 (Mountain Standard Time)
 [debug] ----------------------------------------------------------------------
 [debug] 
 [info] Starting Firebase development server...
 [info] 
 [info] Project Directory: C:\Users\thing\Desktop\travel-app\New folder
+[warn] !  Port 5000 is not available. Trying another port...
 [info] Public Directory: public
 [info] 
-[info] Server listening at: http://localhost:5000
+[info] Server listening at: http://localhost:5001

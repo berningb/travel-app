@@ -7,7 +7,11 @@ angular.module('app').component('triplist', {
         console.log(this.trips);
         this.createNewTrip = function() {
             this.trips.$add({
-                Name: this.newTripName
+                Name: this.newTripName,
+                Location: "None",
+                Destination: "None",
+                Mpg: "",
+                New: true
             });
             this.newTripName = '';
         }
